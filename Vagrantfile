@@ -20,4 +20,7 @@ Vagrant.configure(2) do |config|
     # ansible.playbook = "plays/ruby.yml"
   end
 
+  config.vm.network :private_network, ip: "192.168.0.234"
+
 end
+
