@@ -31,7 +31,7 @@
       pip: name=paramiko
     - name: install python depenency module PyYAML
       pip: name=PyYAML
-    - name: install python depenency module Jinja2
+    - name: install python depenency modlule Jinja2
       pip: name=Jinja2
     - name: install python depenency module httplib2
       pip: name=httplib2
