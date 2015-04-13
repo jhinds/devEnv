@@ -1,0 +1,63 @@
+---
+- hosts: all
+  tasks: 
+    - name: update cahce and install nodejs
+      apt: update_cache=yes name=nodejs
+    - name: install software-properties-common
+      apt: name=software-properties-common
+    - name: add ansible repository
+      apt_repository: name=ppa:ansible/ansible
+    - name: update cahce and install ansible
+      apt: update_cache=yes name=ansible
+    - name: install ruby dependncies onto 
+      apt: name=git-core name=curl name=zlib1g-dev name=build-essential name=libssl-dev name=libreadline-dev name=libyaml-dev name=libsqlite3-dev name=sqlite3 name=libxml2-dev name=libxslt1-dev name=libcurl4-openssl-dev name=python-software-properties name=libffi-dev 
+    - name: clone the git repo 
+      git: clone=git://github.com/sstephenson/rbenv.git dest=.rbenv
+    - name: 
+      wget: 
+---
+- hosts: all
+    - name: clone ansible from git
+      git: clone=git://github.com/ansible/ansible.git
+    - name: 
+      command: chdir=./ansible
+      source: ./hacking/env-setup
+    - name: install pip 
+      easy_install: pip
+      sudo: yes
+    - name: install python modules
+      pip: name=paramiko PyYAML Jinja2 httplib2
+    - name: update submodules
+      git: pull --rebase
+      git: submodule update --init --recursive
+
+# cd
+# git clone git://github.com/sstephenson/rbenv.git .rbenv
+# echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+# echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+# exec $SHELL
+
+# git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+# echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+# exec $SHELL
+
+# rbenv install 2.2.0
+# rbenv global 2.2.0
+# ruby -v
+# gem install bundler
+# gem install rails -v 4.2.0
+# rbenv rehash
+# docker
+# wget -qO- https://get.docker.com/ | sh
+
+#Things I want set up.
+#pebble dev
+#iOS dev
+#Android dev
+#git installed YES
+#ruby installed YES
+#rails installed
+#pip installed YES
+#docker installed YES
+#nodejs installed YES
+#ansible from source (maybe from source) YES

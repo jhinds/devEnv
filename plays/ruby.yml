@@ -1,0 +1,16 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: step 1
+      shell: gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    - name: install curl
+      apt: name=curl
+    - name: step 2
+      shell: \curl -sSL https://get.rvm.io | bash -s stablervm
+    # - name: source it 
+    #   shell: source /home/vagrant/.rvm/scripts/rvm
+    # - name: install ruby
+    #   shell: rvm install 2.2.1
+
+

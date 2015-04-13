@@ -1,0 +1,8 @@
+---
+- hosts: all
+  sudo: yes
+  tasks: 
+    - name: install docker
+      shell: wget -qO- https://get.docker.com/ | sh
+
+#works perfectly
