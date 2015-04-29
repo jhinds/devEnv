@@ -1,9 +1,0 @@
----
-- hosts: all
-  sudo: yes
-  tasks: 
-    - name: update cahce and install nodejs
-      apt: update_cache=yes name=nodejs
-    - name: install npm
-      apt: name=npm
-#does not install the node shell TODO: Fix that.

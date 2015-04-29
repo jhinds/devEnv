@@ -1,0 +1,42 @@
+---
+- name: install git if not there
+  apt: name=git-core 
+- name: clone ansible from git
+  shell: git clone git://github.com/ansible/ansible.git --recursive
+- name: change directory
+  shell: cd ansible
+# - name: source it  
+#   shell: source ./hacking/env-setup
+- name: set PATH
+  shell: "echo $PATH"
+  environment: 
+    PATH: /home/vagrant/ansible/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+- name: set PYTHONPATH
+  shell: "echo $PYTHONPATH"
+  environment:
+    PYTHONPATH: '/home/vagrant/ansible/lib:'
+- name: set MANPATH
+  shell: "echo $MANPATH"
+  environment:
+    MANPATH: '/home/vagrant/ansible/docs/man:'
+- name: install easy_install
+  apt: name=python-setuptools
+- name: install pip 
+  easy_install: name=pip
+  sudo: yes
+- name: install python depenency module paramiko
+  pip: name=paramiko
+- name: install python depenency module PyYAML
+  pip: name=PyYAML
+- name: install python depenency modlule Jinja2
+  pip: name=Jinja2
+- name: install python depenency module httplib2
+  pip: name=httplib2
+# - name: git rebase
+#   shell: git pull --rebase
+# - name: track submodules
+#   shell: git submodule update --init --recursive
+- name: echo
+  shell: echo "127.0.0.1" > ~/ansible_hosts
+- name: export
+  shell: export ANSIBLE_HOSTS=~/ansible_hosts

@@ -1,0 +1,9 @@
+---
+- include: git.yml
+- include: java.yml
+- include: python.yml
+- include: nodejs.yml
+- include: todo.yml
+- include: ansiblesource.yml
+# ruby install not working, failing on curl
+# - include: ruby.yml
