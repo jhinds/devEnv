@@ -6,8 +6,10 @@ Vagrant.configure(2) do |config|
   # ubuntu image that I use. Can be found at https://atlas.hashicorp.com/ubuntu/boxes/trusty64
   config.vm.box = "ubuntu/trusty64"
 
-  # this should be used to make virtual box your provider.  vagrant yells at me when I include this though.
-  # config.vm.provider = "virtualbox"
+  # could be used to stop the /etc/resolv.conf from being overridden on restart
+  # config.vm.provider :virtualbox do |vb|
+  #   vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  # end
 
   # the network ip address for the virtual machine
   config.vm.network :private_network, ip: "192.168.0.234"
@@ -17,8 +19,10 @@ Vagrant.configure(2) do |config|
     config.vm.network "forwarded_port", guest: i, host: i
   end  
 
-  #This is the default port mongodb connects to
+  # this is the default port mongodb connects to
   config.vm.network "forwarded_port", guest: 27017, host: 27017
+
+  config.vm.network "forwarded_port", guest: 8080, host:8080
 
   # this install docker on the VM
   config.vm.provision "docker"
