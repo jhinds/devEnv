@@ -3,4 +3,4 @@
   sudo: yes
   gather_facts: false
   roles:
-    - rails
+    - rbenv

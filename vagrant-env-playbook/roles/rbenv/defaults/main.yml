@@ -1,0 +1,22 @@
+---
+rbenv_repo: https://github.com/sstephenson/rbenv.git
+rbenv_version: master
+rbenv_plugins_path: '{{ rbenv_path }}/plugins'
+rbenv_plugins:
+  - name: ruby-build
+    git: https://github.com/sstephenson/ruby-build.git
+    version: master
+rbenv_ruby_version: '{{ ruby_version }}'
+
+user_name: vagrant
+group_name: vagrant
+
+user_home_path: '/home/{{ user_name }}'
+
+rbenv_path: '{{ user_home_path }}/.rbenv'
+rbenv_bin: '{{ rbenv_path }}/bin/rbenv'
+
+rails_version: '~> 4.2'
+ruby_version: 2.2.0
+environment_file: /vagrant/.envrc
+profile_d_path: '{{ user_home_path }}/profile.d'

@@ -22,14 +22,17 @@ Vagrant.configure(2) do |config|
   # this is the default port mongodb connects to
   config.vm.network "forwarded_port", guest: 27017, host: 27017
 
-  config.vm.network "forwarded_port", guest: 8080, host:8080
+  config.vm.network "forwarded_port", guest: 8080, host:8080 
+  config.vm.network "forwarded_port", guest: 3000,  host: 3000, auto_correct: true  # rails application
+  config.vm.network "forwarded_port", guest: 3306,  host: 3307, auto_correct: true  # mysql
+  config.vm.network "forwarded_port", guest: 5432,  host: 5532, auto_correct: true  # postgresql
 
   # this install docker on the VM
   config.vm.provision "docker"
 
   # this are where the ansible plays live (or should) that installs everything on the VM 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "vagrant-env-playbook/main.yml"
+    ansible.playbook = "vagrant-env-playbook/site.yml"
   end
 
   # this message pops up after you run a vagrant up.  I added it here for a reminder to myself since I still haven't found a way to automate this.  
