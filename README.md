@@ -1,4 +1,4 @@
-# devEnv
+# vagrant_environment
 Setup for my preferred development environment.
 
 I created this just so I have an automated way to build my developemnt environment.
