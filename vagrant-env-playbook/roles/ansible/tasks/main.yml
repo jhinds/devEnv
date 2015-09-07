@@ -1,0 +1,3 @@
+---
+- name: install git if not there
+  apt: name=ansible

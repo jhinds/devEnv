@@ -3,4 +3,3 @@
   apt: update_cache=yes name=nodejs
 - name: install npm
   apt: name=npm
-#does not install the node shell TODO: Fix that.

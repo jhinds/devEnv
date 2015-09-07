@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  sudo: yes
-  gather_facts: false
+  gather_facts: true
   roles:
     - rails
